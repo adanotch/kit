@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Adanotch Extension Manifest",
+  "type": "object",
+  "required": ["id", "name", "version", "adanotchVersion", "main", "slots", "permissions"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": {
+      "description": "Reverse-DNS, at least three parts, lowercase: local.you.my-extension",
+      "type": "string",
+      "pattern": "^[a-z0-9-]+(\\.[a-z0-9-]+){2,}$"
+    },
+    "name": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "version": {
+      "description": "Semantic version: 1.0.0",
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.-]+)?$"
+    },
+    "adanotchVersion": { "type": "string", "minLength": 1 },
+    "main": {
+      "description": "The built script, relative to this file",
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_./-]+\\.js$"
+    },
+    "description": { "type": "string", "maxLength": 280 },
+    "author": { "type": "string", "maxLength": 80 },
+    "license": { "type": "string" },
+    "slots": {
+      "description": "compact: beside the notch; expanded: the open island card",
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "enum": ["compact", "expanded", "hud"] }
+    },
+    "permissions": {
+      "description": "What the extension may use; the user approves each one. network:<domain> also covers its subdomains.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(system\\.stats|battery\\.read|notifications|timer\\.read|timer\\.control|devices\\.read|media\\.read|media\\.control|calendar\\.read|reminders\\.read|clipboard\\.read|clipboard\\.write|files\\.drop|network:[a-zA-Z0-9.-]+)$"
+      }
+    },
+    "refresh": {
+      "description": "How often update() runs on its own: 5s, 10m, 1h (1s at least), or \"manual\" to run it only from events, actions and ctx.refresh(). Default 5s.",
+      "type": "string",
+      "pattern": "^([1-9]\\d*(s|m|h)|manual)$"
+    },
+    "priority": {
+      "description": "Deprecated and ignored: the user decides the order in Settings.",
+      "deprecated": true
+    },
+    "triggers": {
+      "description": "Deprecated and ignored: subscribe with AdanotchKit.events.on(...) instead.",
+      "deprecated": true
+    },
+    "settings": {
+      "description": "Controls Adanotch shows in Settings for this extension; their values arrive as ctx.settings (secrets through AdanotchKit.secrets.get)",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "type", "label"],
+        "additionalProperties": false,
+        "properties": {
+          "key": { "type": "string", "minLength": 1 },
+          "type": {
+            "description": "secret: an API token or password, kept in the Keychain and never in ctx.settings",
+            "type": "string",
+            "enum": ["toggle", "number", "text", "select", "multiselect", "color", "date", "secret"]
+          },
+          "label": { "type": "string", "minLength": 1 },
+          "default": {
+            "description": "multiselect: an array of option values; color: \"#RRGGBB\"; date: milliseconds since 1970",
+            "type": ["boolean", "number", "string", "array"],
+            "items": { "type": "string" }
+          },
+          "options": {
+            "description": "Required for select and multiselect",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["value", "label"],
+              "additionalProperties": false,
+              "properties": { "value": { "type": "string" }, "label": { "type": "string" } }
+            }
+          },
+          "unit": { "type": "string" }
+        },
+        "if": { "properties": { "type": { "not": { "const": "secret" } } } },
+        "then": { "required": ["default"], "properties": { "default": true } }
+      }
+    },
+    "categories": { "type": "array", "items": { "type": "string" } }
+  }
+}

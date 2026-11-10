@@ -1,0 +1,49 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "node", "promise", "unicorn", "oxc"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "perf": "warn"
+  },
+  "rules": {
+    "eqeqeq": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "typescript/no-explicit-any": "error",
+    "typescript/consistent-type-imports": "error",
+    "typescript/no-non-null-assertion": "error",
+    "unicorn/prefer-node-protocol": "error",
+    "unicorn/no-array-for-each": "off"
+  },
+  "overrides": [
+    {
+      "files": ["src/runtime.js"],
+      "rules": {
+        "no-var": "off",
+        "eqeqeq": "off",
+        "no-underscore-dangle": "off",
+        "no-shadow": "off",
+        "no-unused-vars": "off",
+        "no-await-in-loop": "off",
+        "preserve-caught-error": "off",
+        "unicorn/consistent-function-scoping": "off",
+        "promise/no-callback-in-promise": "off"
+      }
+    },
+    {
+      "files": ["test/**/*.ts", "test/**/*.mjs"],
+      "rules": {
+        "no-await-in-loop": "off"
+      }
+    },
+    {
+      "files": ["types/**/*.d.ts"],
+      "rules": {
+        "typescript/triple-slash-reference": "off",
+        "typescript/no-wrapper-object-types": "off"
+      }
+    }
+  ],
+  "ignorePatterns": ["dist", "node_modules", "test/**/fixture*/**"]
+}

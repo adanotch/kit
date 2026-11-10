@@ -1,0 +1,83 @@
+{
+  "name": "@adanotch/kit",
+  "version": "0.1.0",
+  "description": "Types and test kit for Adanotch extensions: the AdanotchKit API, a Node test harness and the manifest schema.",
+  "license": "MIT",
+  "type": "module",
+  "types": "./types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts"
+    },
+    "./testing": {
+      "types": "./dist/testing/index.d.ts",
+      "default": "./dist/testing/index.js"
+    },
+    "./manifest.schema.json": "./schema/manifest.schema.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "types",
+    "schema",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "keywords": [
+    "adanotch",
+    "extension",
+    "macos",
+    "notch",
+    "dynamic-island"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adanotch/kit.git"
+  },
+  "homepage": "https://www.adanotch.com/docs/en",
+  "bugs": {
+    "url": "https://github.com/adanotch/kit/issues"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "adanotch": {
+    "minimumAppVersion": "0.1.0"
+  },
+  "peerDependencies": {
+    "esbuild": ">=0.25"
+  },
+  "peerDependenciesMeta": {
+    "esbuild": {
+      "optional": true
+    }
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc -p tsconfig.json && tsc -p contract/tsconfig.json",
+    "lint": "oxlint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "node --test \"test/**/*.test.ts\"",
+    "test:package": "npm run build && node --test \"test/package/*.test.mjs\"",
+    "check:package": "npm run build && publint --strict && attw --pack . --profile esm-only",
+    "check": "npm run lint && npm run format:check && npm run typecheck && npm run contract:check && npm test && npm run test:package && npm run check:package",
+    "prepack": "npm run build",
+    "contract": "node scripts/build-contract.mjs",
+    "contract:check": "node scripts/build-contract.mjs --check"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@types/node": "^26.6.6",
+    "ajv": "^8.20.0",
+    "esbuild": "^0.28.2",
+    "oxlint": "^1.93.0",
+    "prettier": "^3.9.10",
+    "publint": "^0.3.25",
+    "typescript": "^7.0.2"
+  }
+}

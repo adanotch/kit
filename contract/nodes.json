@@ -1,0 +1,474 @@
+{
+  "text": [
+    {
+      "type": "text",
+      "value": "Hello"
+    },
+    {
+      "type": "text",
+      "value": "Title",
+      "style": "title",
+      "tone": "accent"
+    }
+  ],
+  "markdown": [
+    {
+      "type": "markdown",
+      "value": "**bold**, *italic*, `code` and [a link](https://example.com)"
+    },
+    {
+      "type": "markdown",
+      "value": "Quiet",
+      "tone": "secondary"
+    }
+  ],
+  "icon": [
+    {
+      "type": "icon",
+      "name": "cpu"
+    },
+    {
+      "type": "icon",
+      "name": "exclamationmark.triangle",
+      "tone": "warning"
+    }
+  ],
+  "image": [
+    {
+      "type": "image",
+      "src": "https://example.com/logo.png"
+    },
+    {
+      "type": "image",
+      "src": "https://example.com/avatar.png",
+      "shape": "circle",
+      "size": 32
+    }
+  ],
+  "pet": [
+    {
+      "type": "pet",
+      "pet": "lokum",
+      "value": "idle"
+    },
+    {
+      "type": "pet",
+      "pet": "active",
+      "value": "nightShift",
+      "size": 48
+    }
+  ],
+  "swatch": [
+    {
+      "type": "swatch",
+      "value": "#FF8800"
+    },
+    {
+      "type": "swatch",
+      "value": "#f80",
+      "size": 24
+    }
+  ],
+  "badge": [
+    {
+      "type": "badge",
+      "text": "3"
+    },
+    {
+      "type": "badge",
+      "text": "New",
+      "tone": "success"
+    }
+  ],
+  "gauge": [
+    {
+      "type": "gauge",
+      "label": "CPU",
+      "value": 42
+    },
+    {
+      "type": "gauge",
+      "label": "Disk",
+      "value": 91,
+      "tone": "warning"
+    }
+  ],
+  "ring": [
+    {
+      "type": "ring",
+      "value": 60
+    },
+    {
+      "type": "ring",
+      "value": 75,
+      "label": "Disk",
+      "tone": "accent"
+    }
+  ],
+  "progress": [
+    {
+      "type": "progress",
+      "value": 30
+    },
+    {
+      "type": "progress",
+      "value": 100,
+      "tone": "success"
+    }
+  ],
+  "chart": [
+    {
+      "type": "chart",
+      "values": [
+        1,
+        2,
+        3,
+        2
+      ],
+      "style": "line"
+    },
+    {
+      "type": "chart",
+      "values": [
+        3,
+        1,
+        2
+      ],
+      "style": "bar",
+      "min": 0,
+      "max": 5,
+      "tone": "accent"
+    }
+  ],
+  "timer": [
+    {
+      "type": "timer",
+      "date": 1700000000000,
+      "style": "timer"
+    },
+    {
+      "type": "timer",
+      "date": 1700000000000,
+      "style": "relative",
+      "textStyle": "caption",
+      "tone": "secondary"
+    }
+  ],
+  "stack": [
+    {
+      "type": "stack",
+      "axis": "v",
+      "children": [
+        {
+          "type": "text",
+          "value": "Hello"
+        }
+      ]
+    },
+    {
+      "type": "stack",
+      "axis": "h",
+      "spacing": 8,
+      "align": "center",
+      "children": [
+        {
+          "type": "icon",
+          "name": "bell"
+        },
+        {
+          "type": "text",
+          "value": "Hello"
+        },
+        {
+          "type": "spacer"
+        }
+      ]
+    }
+  ],
+  "grid": [
+    {
+      "type": "grid",
+      "columns": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Hello"
+        },
+        {
+          "type": "text",
+          "value": "Hello"
+        }
+      ]
+    },
+    {
+      "type": "grid",
+      "columns": 3,
+      "spacing": 4,
+      "children": [
+        {
+          "type": "text",
+          "value": "Hello"
+        },
+        {
+          "type": "text",
+          "value": "Hello"
+        },
+        {
+          "type": "text",
+          "value": "Hello"
+        }
+      ]
+    }
+  ],
+  "scroll": [
+    {
+      "type": "scroll",
+      "child": {
+        "type": "text",
+        "value": "Hello"
+      }
+    },
+    {
+      "type": "scroll",
+      "child": {
+        "type": "text",
+        "value": "Hello"
+      },
+      "maxHeight": 120
+    }
+  ],
+  "tabs": [
+    {
+      "type": "tabs",
+      "tabs": [
+        {
+          "title": "One",
+          "content": {
+            "type": "text",
+            "value": "Hello"
+          }
+        },
+        {
+          "title": "Two",
+          "icon": "star",
+          "content": {
+            "type": "text",
+            "value": "Second"
+          }
+        }
+      ]
+    }
+  ],
+  "divider": [
+    {
+      "type": "divider"
+    }
+  ],
+  "spacer": [
+    {
+      "type": "spacer"
+    }
+  ],
+  "button": [
+    {
+      "type": "button",
+      "label": "Refresh",
+      "action": "refresh",
+      "primary": false
+    },
+    {
+      "type": "button",
+      "label": "Open",
+      "action": "open",
+      "icon": "arrow.up.right",
+      "primary": true,
+      "value": {
+        "id": 1,
+        "tags": [
+          "a"
+        ]
+      }
+    }
+  ],
+  "toggle": [
+    {
+      "type": "toggle",
+      "label": "Sound",
+      "action": "sound",
+      "value": true
+    }
+  ],
+  "slider": [
+    {
+      "type": "slider",
+      "action": "volume",
+      "value": 50,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "slider",
+      "action": "volume",
+      "value": 5,
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "label": "Volume"
+    }
+  ],
+  "textField": [
+    {
+      "type": "textField",
+      "action": "add"
+    },
+    {
+      "type": "textField",
+      "action": "add",
+      "value": "milk",
+      "placeholder": "Add an item…",
+      "changeAction": "typing"
+    }
+  ],
+  "textArea": [
+    {
+      "type": "textArea",
+      "action": "send"
+    },
+    {
+      "type": "textArea",
+      "action": "send",
+      "value": "Draft",
+      "placeholder": "Write…",
+      "changeAction": "draft",
+      "lines": 6
+    }
+  ],
+  "datePicker": [
+    {
+      "type": "datePicker",
+      "action": "when",
+      "value": 1700000000000,
+      "mode": "date"
+    },
+    {
+      "type": "datePicker",
+      "action": "when",
+      "value": 1700000000000,
+      "mode": "dateTime",
+      "label": "Remind me"
+    }
+  ],
+  "table": [
+    {
+      "type": "table",
+      "headers": [
+        "Name",
+        "Qty"
+      ],
+      "rows": [
+        [
+          "Milk",
+          "2"
+        ]
+      ]
+    },
+    {
+      "type": "table",
+      "headers": [
+        "A"
+      ],
+      "rows": []
+    }
+  ],
+  "calendarDay": [
+    {
+      "type": "calendarDay",
+      "value": 14
+    }
+  ],
+  "countdown": [
+    {
+      "type": "countdown",
+      "start": 1700000000000,
+      "end": 1700001500000
+    },
+    {
+      "type": "countdown",
+      "start": 1700000000000,
+      "end": 1700003000000,
+      "label": "Focus",
+      "tone": "accent"
+    }
+  ],
+  "picker": [
+    {
+      "type": "picker",
+      "action": "units",
+      "value": "c",
+      "options": [
+        {
+          "value": "c",
+          "label": "°C"
+        },
+        {
+          "value": "f",
+          "label": "°F"
+        }
+      ]
+    },
+    {
+      "type": "picker",
+      "action": "units",
+      "value": "f",
+      "label": "Units",
+      "options": [
+        {
+          "value": "f",
+          "label": "°F"
+        }
+      ]
+    }
+  ],
+  "list": [
+    {
+      "type": "list",
+      "items": [
+        {
+          "title": "Row"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "items": [
+        {
+          "title": "Pull request",
+          "subtitle": "acme/app#12",
+          "icon": "arrow.triangle.pull",
+          "action": "select",
+          "trailing": "2 min",
+          "tone": "warning",
+          "value": {
+            "number": 12
+          },
+          "buttons": [
+            {
+              "icon": "checkmark",
+              "label": "Approve",
+              "action": "approve",
+              "value": 12
+            }
+          ]
+        },
+        {
+          "title": "Safari",
+          "appIcon": "com.apple.Safari"
+        },
+        {
+          "title": "Accent",
+          "swatch": "#0A84FF"
+        }
+      ]
+    }
+  ]
+}
