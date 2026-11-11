@@ -25,7 +25,7 @@ function union(name: string): string[] {
 
 test("the corpus covers every node type the types declare, and no other", () => {
   const declared = union("Node");
-  assert.ok(declared.length >= 28, `found ${declared.length} node types in view.d.ts`);
+  assert.ok(declared.length >= 31, `found ${declared.length} node types in view.d.ts`);
   assert.deepEqual(Object.keys(nodes).toSorted(), declared.toSorted());
 });
 
@@ -39,7 +39,7 @@ test("every example carries the type it is filed under, and each type has a mini
     .map(([type]) => type)
     .toSorted();
   // Nodes with nothing optional have one shape only.
-  assert.deepEqual(lone, ["calendarDay", "divider", "spacer", "tabs", "toggle"]);
+  assert.deepEqual(lone, ["calendarDay", "divider", "spacer", "toggle"]);
 });
 
 test("contract/nodes.json is the corpus in contract/nodes.ts, as JSON", () => {

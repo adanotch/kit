@@ -78,6 +78,84 @@
       "type": "badge",
       "text": "New",
       "tone": "success"
+    },
+    {
+      "type": "badge",
+      "text": "Live",
+      "tone": "warning",
+      "live": true
+    },
+    {
+      "type": "badge",
+      "text": "Synced",
+      "tone": "success",
+      "dot": true,
+      "icon": "checkmark",
+      "filled": true
+    }
+  ],
+  "alert": [
+    {
+      "type": "alert",
+      "title": "Saved"
+    },
+    {
+      "type": "alert",
+      "title": "This module is off",
+      "message": "Settings are saved but it won't show on the island.",
+      "tone": "warning",
+      "variant": "tinted",
+      "button": {
+        "label": "Turn on",
+        "action": "enable",
+        "value": {
+          "id": 1
+        }
+      }
+    }
+  ],
+  "card": [
+    {
+      "type": "card",
+      "children": [
+        {
+          "type": "text",
+          "value": "Hello"
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "children": [
+        {
+          "type": "text",
+          "value": "Hello"
+        },
+        {
+          "type": "badge",
+          "text": "3"
+        }
+      ],
+      "variant": "brand",
+      "selected": true,
+      "action": "open",
+      "value": {
+        "id": 7
+      }
+    }
+  ],
+  "iconBadge": [
+    {
+      "type": "iconBadge",
+      "name": "bolt.fill"
+    },
+    {
+      "type": "iconBadge",
+      "name": "checkmark",
+      "tone": "success",
+      "variant": "solid",
+      "size": "lg",
+      "round": true
     }
   ],
   "gauge": [
@@ -257,6 +335,19 @@
           }
         }
       ]
+    },
+    {
+      "type": "tabs",
+      "style": "underline",
+      "tabs": [
+        {
+          "title": "One",
+          "content": {
+            "type": "text",
+            "value": "Hello"
+          }
+        }
+      ]
     }
   ],
   "divider": [
@@ -288,6 +379,14 @@
           "a"
         ]
       }
+    },
+    {
+      "type": "button",
+      "label": "Delete",
+      "action": "delete",
+      "primary": false,
+      "variant": "destructive",
+      "size": "small"
     }
   ],
   "toggle": [
@@ -327,6 +426,14 @@
       "value": "milk",
       "placeholder": "Add an item…",
       "changeAction": "typing"
+    },
+    {
+      "type": "textField",
+      "action": "search",
+      "placeholder": "Search",
+      "icon": "magnifyingglass",
+      "hint": "⌘F",
+      "invalid": true
     }
   ],
   "textArea": [
@@ -425,6 +532,22 @@
         {
           "value": "f",
           "label": "°F"
+        }
+      ]
+    },
+    {
+      "type": "picker",
+      "action": "view",
+      "value": "a",
+      "style": "segmented",
+      "options": [
+        {
+          "value": "a",
+          "label": "A"
+        },
+        {
+          "value": "b",
+          "label": "B"
         }
       ]
     }

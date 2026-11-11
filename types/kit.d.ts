@@ -16,7 +16,28 @@ declare namespace Adanotch {
       image(src: string, options?: { shape?: "rounded" | "circle"; size?: number }): ImageNode;
       pet(id: string, pose: PetPose, options?: { size?: number }): PetNode;
       swatch(color: string, options?: { size?: number }): SwatchNode;
-      badge(text: string, options?: { tone?: Tone }): BadgeNode;
+      badge(
+        text: string,
+        options?: { tone?: Tone; dot?: boolean; live?: boolean; icon?: Symbol; filled?: boolean },
+      ): BadgeNode;
+      alert(
+        title: string,
+        options?: {
+          message?: string;
+          tone?: Tone;
+          variant?: AlertVariant;
+          button?: { label: string; action: string; value?: JSONValue };
+        },
+      ): AlertNode;
+      /** `null`, `undefined` and `false` children are skipped. */
+      card(
+        children: (Node | null | undefined | false)[],
+        options?: { variant?: CardVariant; selected?: boolean; action?: string; value?: JSONValue },
+      ): CardNode;
+      iconBadge(
+        name: Symbol,
+        options?: { tone?: Tone; variant?: IconBadgeVariant; size?: IconBadgeSize; round?: boolean },
+      ): IconBadgeNode;
       gauge(label: string, value: number, options?: { tone?: Tone }): GaugeNode;
       ring(value: number, options?: { label?: string; tone?: Tone }): RingNode;
       progress(value: number, options?: { tone?: Tone }): ProgressNode;
@@ -35,13 +56,19 @@ declare namespace Adanotch {
       ): StackNode;
       grid(children: (Node | null | undefined | false)[], options?: { columns?: number; spacing?: number }): GridNode;
       scroll(child: Node, options?: { maxHeight?: number }): ScrollNode;
-      tabs(tabs: Tab[]): TabsNode;
+      tabs(tabs: Tab[], options?: { style?: "container" | "underline" }): TabsNode;
       divider(): DividerNode;
       spacer(): SpacerNode;
       button(
         label: string,
         action: string,
-        options?: { icon?: Symbol; primary?: boolean; value?: JSONValue },
+        options?: {
+          icon?: Symbol;
+          primary?: boolean;
+          variant?: ButtonVariant;
+          size?: "small" | "regular";
+          value?: JSONValue;
+        },
       ): ButtonNode;
       toggle(label: string, action: string, isOn: boolean): ToggleNode;
       /** `min` 0 and `max` 100 unless given. */
@@ -52,7 +79,14 @@ declare namespace Adanotch {
       ): SliderNode;
       textField(
         action: string,
-        options?: { value?: string; placeholder?: string; changeAction?: string },
+        options?: {
+          value?: string;
+          placeholder?: string;
+          changeAction?: string;
+          icon?: Symbol;
+          hint?: string;
+          invalid?: boolean;
+        },
       ): TextFieldNode;
       textArea(
         action: string,
@@ -66,7 +100,12 @@ declare namespace Adanotch {
       table(headers: Iterable<string>, rows: Iterable<Iterable<string | number>>): TableNode;
       calendarDay(day: number): CalendarDayNode;
       countdown(start: Date | number, end: Date | number, options?: { label?: string; tone?: Tone }): CountdownNode;
-      picker(action: string, value: string, options: (string | PickerOption)[], extra?: { label?: string }): PickerNode;
+      picker(
+        action: string,
+        value: string,
+        options: (string | PickerOption)[],
+        extra?: { label?: string; style?: "menu" | "segmented" },
+      ): PickerNode;
       list(items: (ListItem | null | undefined | false)[]): ListNode;
     };
 

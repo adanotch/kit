@@ -72,10 +72,62 @@ declare namespace Adanotch {
     value: string;
     size?: number;
   }
+  /** A short status or count: one or two words. */
   interface BadgeNode {
     type: "badge";
     text: string;
     tone?: Tone;
+    /** A small dot before the text. */
+    dot?: boolean;
+    /** A pulsing dot for something happening right now (implies `dot`). Still under Reduce Motion. */
+    live?: boolean;
+    /** An SF Symbol before the text. */
+    icon?: Symbol;
+    /** A solid ground with light text, for one badge that should stand out ("New"). */
+    filled?: boolean;
+  }
+  /** Alert looks: no ground, the tone at 12 % with a tone edge, or the card ground with a hairline. */
+  type AlertVariant = "ghost" | "tinted" | "border";
+  /**
+   * A message under a header or above a form: a status dot, a title and an optional sentence. `tone` sets the dot,
+   * the ground and the edge: `accent` reads as information, `default` and `secondary` as plain information too.
+   * Not for the compact slot.
+   */
+  interface AlertNode {
+    type: "alert";
+    title: string;
+    message?: string;
+    tone?: Tone;
+    variant?: AlertVariant;
+    /** One small button at the trailing edge; it calls `onAction(action, ctx, value)`. */
+    button?: { label: string; action: string; value?: JSONValue };
+  }
+  /** Card looks. `tinted` is a soft accent ground; `brand` is the one highlighted card of a view. */
+  type CardVariant = "bordered" | "borderless" | "tinted" | "brand";
+  /**
+   * A group of related content on a card ground. With an `action` the whole card is a button
+   * (`onAction(action, ctx, value)`); `selected` marks the chosen one in a set of cards. Not for the compact slot.
+   */
+  interface CardNode {
+    type: "card";
+    children: Node[];
+    variant?: CardVariant;
+    selected?: boolean;
+    action?: string;
+    value?: JSONValue;
+  }
+  type IconBadgeVariant = "tinted" | "solid" | "ghost" | "border" | "outline" | "gradient";
+  type IconBadgeSize = "sm" | "md" | "lg" | "xl";
+  /** An SF Symbol on a tile in the tone's colour: the leading mark of a row or a card. */
+  interface IconBadgeNode {
+    type: "iconBadge";
+    name: Symbol;
+    tone?: Tone;
+    variant?: IconBadgeVariant;
+    /** 24, 28, 40 or 56 points; default `md`. */
+    size?: IconBadgeSize;
+    /** A circle instead of a rounded square. */
+    round?: boolean;
   }
   /** `value` is 0–100. */
   interface GaugeNode {
@@ -144,6 +196,8 @@ declare namespace Adanotch {
   interface TabsNode {
     type: "tabs";
     tabs: Tab[];
+    /** `container` (default): the active tab is a raised pill. `underline`: a line under the active title. */
+    style?: "container" | "underline";
   }
   interface DividerNode {
     type: "divider";
@@ -152,12 +206,17 @@ declare namespace Adanotch {
   interface SpacerNode {
     type: "spacer";
   }
+  /** `primary` is the one main action of a view; `secondary` and `outline` are quieter; `destructive` deletes. */
+  type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "tinted" | "destructive";
   interface ButtonNode {
     type: "button";
     label: string;
     action: string;
     icon?: Symbol;
+    /** Same as `variant: "primary"`; `variant` wins when both are given. */
     primary: boolean;
+    variant?: ButtonVariant;
+    size?: "small" | "regular";
     value?: JSONValue;
   }
   /** `onAction(action, ctx, isOn)`. */
@@ -187,6 +246,12 @@ declare namespace Adanotch {
     value?: string;
     placeholder?: string;
     changeAction?: string;
+    /** An SF Symbol at the start of the field. */
+    icon?: Symbol;
+    /** Short text at the end of the field: a unit, a shortcut. */
+    hint?: string;
+    /** Draws the field's edge in the danger colour. */
+    invalid?: boolean;
   }
   /** Several lines. `onAction(action, ctx, text)` on ⌘Return; `changeAction` also as the user types, after a pause. `lines` 2–12, default 4. */
   interface TextAreaNode {
@@ -235,6 +300,8 @@ declare namespace Adanotch {
     value: string;
     options: PickerOption[];
     label?: string;
+    /** `menu` (default): a drop-down. `segmented`: a row of segments, for 2–4 short options. */
+    style?: "menu" | "segmented";
   }
   interface ListItem {
     title: string;
@@ -284,6 +351,9 @@ declare namespace Adanotch {
     | PickerNode
     | ListNode
     | TextAreaNode
+    | AlertNode
+    | CardNode
+    | IconBadgeNode
     | DatePickerNode
     | TableNode
     | CalendarDayNode

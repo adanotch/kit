@@ -4,7 +4,7 @@ type Visitable = Record<string, unknown> | unknown[];
 
 const isObject = (value: unknown): value is Visitable => typeof value === "object" && value !== null;
 
-/** Every text in `node`: text, markdown, badges, labels, list titles, buttons and table cells. */
+/** Every text in `node`: text, markdown, badges, alerts, labels, list titles, buttons and table cells. */
 export function texts(node: unknown): string[] {
   const out: string[] = [];
   const visit = (value: unknown): void => {
@@ -16,7 +16,7 @@ export function texts(node: unknown): string[] {
     const keys =
       value["type"] === "text" || value["type"] === "markdown"
         ? ["value"]
-        : ["text", "label", "title", "subtitle", "trailing"];
+        : ["text", "label", "title", "subtitle", "trailing", "message", "hint"];
     for (const key of keys) {
       const field = value[key];
       if (typeof field === "string") out.push(field);

@@ -33,6 +33,34 @@ export const nodes = {
   badge: [
     { type: "badge", text: "3" },
     { type: "badge", text: "New", tone: "success" },
+    { type: "badge", text: "Live", tone: "warning", live: true },
+    { type: "badge", text: "Synced", tone: "success", dot: true, icon: "checkmark", filled: true },
+  ],
+  alert: [
+    { type: "alert", title: "Saved" },
+    {
+      type: "alert",
+      title: "This module is off",
+      message: "Settings are saved but it won't show on the island.",
+      tone: "warning",
+      variant: "tinted",
+      button: { label: "Turn on", action: "enable", value: { id: 1 } },
+    },
+  ],
+  card: [
+    { type: "card", children: [text] },
+    {
+      type: "card",
+      children: [text, { type: "badge", text: "3" }],
+      variant: "brand",
+      selected: true,
+      action: "open",
+      value: { id: 7 },
+    },
+  ],
+  iconBadge: [
+    { type: "iconBadge", name: "bolt.fill" },
+    { type: "iconBadge", name: "checkmark", tone: "success", variant: "solid", size: "lg", round: true },
   ],
   gauge: [
     { type: "gauge", label: "CPU", value: 42 },
@@ -80,6 +108,7 @@ export const nodes = {
         { title: "Two", icon: "star", content: { type: "text", value: "Second" } },
       ],
     },
+    { type: "tabs", style: "underline", tabs: [{ title: "One", content: text }] },
   ],
   divider: [{ type: "divider" }],
   spacer: [{ type: "spacer" }],
@@ -93,6 +122,7 @@ export const nodes = {
       primary: true,
       value: { id: 1, tags: ["a"] },
     },
+    { type: "button", label: "Delete", action: "delete", primary: false, variant: "destructive", size: "small" },
   ],
   toggle: [{ type: "toggle", label: "Sound", action: "sound", value: true }],
   slider: [
@@ -102,6 +132,7 @@ export const nodes = {
   textField: [
     { type: "textField", action: "add" },
     { type: "textField", action: "add", value: "milk", placeholder: "Add an item…", changeAction: "typing" },
+    { type: "textField", action: "search", placeholder: "Search", icon: "magnifyingglass", hint: "⌘F", invalid: true },
   ],
   textArea: [
     { type: "textArea", action: "send" },
@@ -131,6 +162,16 @@ export const nodes = {
       ],
     },
     { type: "picker", action: "units", value: "f", label: "Units", options: [{ value: "f", label: "°F" }] },
+    {
+      type: "picker",
+      action: "view",
+      value: "a",
+      style: "segmented",
+      options: [
+        { value: "a", label: "A" },
+        { value: "b", label: "B" },
+      ],
+    },
   ],
   list: [
     { type: "list", items: [{ title: "Row" }] },
