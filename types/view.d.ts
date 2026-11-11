@@ -55,7 +55,32 @@ declare namespace Adanotch {
     | "nightShift"
     | "alert"
     | "zen"
-    | "searching";
+    | "searching"
+    | "pluggedIn"
+    | "charging"
+    | "fullBattery"
+    | "unplugged"
+    | "thinking"
+    | "reading"
+    | "coding"
+    | "approval"
+    | "team"
+    | "taskDone"
+    | "stuck"
+    | "hello"
+    | "goodbye"
+    | "eating"
+    | "proud"
+    | "rushing"
+    | "carrying"
+    | "stuffed"
+    | "cleaning"
+    | "typing"
+    | "stretching"
+    | "drinking"
+    | "birthday"
+    | "bayram"
+    | "anniversary";
   /**
    * A companion. `pet` is the id of an installed pet, "lokum" for Lokum herself, or "active" for whichever the user
    * chose in Settings › Lokum; an id that isn't installed shows the active one. `size` is 16–120 points; default 40.

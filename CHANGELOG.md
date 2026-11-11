@@ -3,6 +3,19 @@
 Every release, newest first. Deprecations are announced here and with `@deprecated` in the types; the entry says in
 which version the API goes away.
 
+## Unreleased
+
+**Needs a newer Adanotch.** An older Adanotch doesn't know the new poses and rejects the whole view that holds a
+`ui.pet` with one, so use them only when your extension targets the Adanotch that ships them.
+
+- Companion poses: 25 new ones are part of `PetPose`.
+  - Power: `pluggedIn`, `charging`, `fullBattery`, `unplugged`.
+  - AI agents: `thinking`, `reading`, `coding`, `approval`, `team`, `taskDone`, `stuck`.
+  - Mac: `stuffed` (disk almost full), `carrying` (big download), `cleaning` (trash emptied), `eating` (file on the shelf).
+  - Developer: `proud` (PR merged).
+  - Everyday: `hello`, `goodbye`, `rushing`, `typing`, `stretching`, `drinking`.
+  - Special days: `birthday`, `bayram`, `anniversary`.
+
 ## 0.2.0
 
 The design system, as nodes. Everything here is optional and additive: a view written for 0.1.0 draws the same.
