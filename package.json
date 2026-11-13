@@ -1,6 +1,6 @@
 {
   "name": "@adanotch/kit",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Types and test kit for Adanotch extensions: the AdanotchKit API, a Node test harness and the manifest schema.",
   "license": "MIT",
   "type": "module",
